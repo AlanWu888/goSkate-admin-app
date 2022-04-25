@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "690502200751",
+    "project_id": "goskate-41f17",
+    "storage_bucket": "goskate-41f17.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690502200751:android:6b0c6a0978245c17d1135a",
+        "android_client_info": {
+          "package_name": "com.example.admin_goskate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "690502200751-kls88tngv85hlqf5hvdr8g9kr2fc2vjk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnclc2qeJ3HdOxhRceBzMFV4qSCn6GhaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "690502200751-kls88tngv85hlqf5hvdr8g9kr2fc2vjk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690502200751:android:637da34fad40eb97d1135a",
+        "android_client_info": {
+          "package_name": "com.example.goskate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "690502200751-kls88tngv85hlqf5hvdr8g9kr2fc2vjk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnclc2qeJ3HdOxhRceBzMFV4qSCn6GhaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "690502200751-kls88tngv85hlqf5hvdr8g9kr2fc2vjk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
