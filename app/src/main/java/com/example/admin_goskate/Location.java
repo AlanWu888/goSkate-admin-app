@@ -1,18 +1,19 @@
 package com.example.admin_goskate;
 
 public class Location {
-    String name, address, condition, type, description;
+    String name, address, condition, type, description, documentID;
 
     public Location(){
 
     }
 
-    public Location(String name, String address, String condition, String type, String description) {
+    public Location(String name, String address, String condition, String type, String description, String documentID) {
         this.name = name;
         this.address = address;
         this.condition = condition;
         this.type = type;
         this.description = description;
+        this.documentID = documentID;
     }
 
     public String getName() {
@@ -53,5 +54,13 @@ public class Location {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getDocumentID() {
+        return documentID;
+    }
+
+    public void setDocumentID(String documentID) {
+        this.documentID = documentID;
     }
 }

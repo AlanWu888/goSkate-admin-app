@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,9 +21,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -38,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Location> locationArrayList;
     MyAdapter myAdapter;
     ProgressDialog progressDialog;
+    FirebaseAuth firebaseAuth;
+    final String[] collections = {"approval_shops", "approval_parks", "approval_spots"};
+    final String regexTarget = "approval_";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,16 +66,22 @@ public class MainActivity extends AppCompatActivity {
         myAdapter = new MyAdapter(MainActivity.this, locationArrayList);
 
         recyclerView.setAdapter(myAdapter);
+        for (String collection: collections) {
+            EventChangeListener(collection);
+        }
 
-        EventChangeListener();
-
+        firebaseAuth = FirebaseAuth.getInstance();
+        if(firebaseAuth.getCurrentUser() == null) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }
     }
 
-    private void EventChangeListener() {
-        firestore.collection("approval_parks")
+    private void EventChangeListener(String collection) {
+        firestore.collection(collection)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        int i = 0;
                         if (error!=null) {
                             if (progressDialog.isShowing()) {
                                 progressDialog.dismiss();
@@ -78,54 +92,12 @@ public class MainActivity extends AppCompatActivity {
                         for (DocumentChange dc : value.getDocumentChanges()) {
                             if (dc.getType() == DocumentChange.Type.ADDED) {
                                 // if data is added
-                                locationArrayList.add(dc.getDocument().toObject(Location.class));
+                                Location currLocation = dc.getDocument().toObject(Location.class);
+                                currLocation.setType(collection.replaceAll(regexTarget, ""));
+                                currLocation.setDocumentID(value.getDocuments().get(i).getId());
+                                locationArrayList.add(currLocation);
                             }
-                        }
-                        myAdapter.notifyDataSetChanged();
-                        if (progressDialog.isShowing()) {
-                            progressDialog.dismiss();
-                        }
-                    }
-                });
-        firestore.collection("approval_shops")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error!=null) {
-                            if (progressDialog.isShowing()) {
-                                progressDialog.dismiss();
-                            }
-                            Log.e("fireStore error", error.getMessage());
-                            return;
-                        }
-                        for (DocumentChange dc : value.getDocumentChanges()) {
-                            if (dc.getType() == DocumentChange.Type.ADDED) {
-                                // if data is added
-                                locationArrayList.add(dc.getDocument().toObject(Location.class));
-                            }
-                        }
-                        myAdapter.notifyDataSetChanged();
-                        if (progressDialog.isShowing()) {
-                            progressDialog.dismiss();
-                        }
-                    }
-                });
-        firestore.collection("approval_spots")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error!=null) {
-                            if (progressDialog.isShowing()) {
-                                progressDialog.dismiss();
-                            }
-                            Log.e("fireStore error", error.getMessage());
-                            return;
-                        }
-                        for (DocumentChange dc : value.getDocumentChanges()) {
-                            if (dc.getType() == DocumentChange.Type.ADDED) {
-                                // if data is added
-                                locationArrayList.add(dc.getDocument().toObject(Location.class));
-                            }
+                            i++;
                         }
                         myAdapter.notifyDataSetChanged();
                         if (progressDialog.isShowing()) {
@@ -134,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
 }
 
 
