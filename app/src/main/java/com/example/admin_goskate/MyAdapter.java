@@ -32,10 +32,13 @@ import java.util.Map;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     Context context;
     ArrayList<Location> locationArrayList;
+    RecyclerView rv;
+    ItemClickListener itemClickListener;
 
-    public MyAdapter(Context context, ArrayList<Location> locationArrayList) {
+    public MyAdapter(Context context, ArrayList<Location> locationArrayList, RecyclerView rv) {
         this.context = context;
         this.locationArrayList = locationArrayList;
+        this.rv = rv;
     }
 
     @NonNull
@@ -62,7 +65,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return locationArrayList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         Context context;
         TextView lbl_name, lbl_address, lbl_condition, lbl_type, lbl_description, lbl_id;
         Button btn_reject, btn_approve;
@@ -138,6 +141,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     }
                 }
             });
+
             btn_reject.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -148,6 +152,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
                     // remove document from fireStore
                     removeDocument(documentID, collectionType);
+
                 }
             });
         }
@@ -166,6 +171,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     }
                 }
             });
+            // new MainActivity().removeFromView();
         }
     }
 }

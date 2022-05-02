@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         firestore = FirebaseFirestore.getInstance();
         locationArrayList = new ArrayList<Location>();
-        myAdapter = new MyAdapter(MainActivity.this, locationArrayList);
+        myAdapter = new MyAdapter(MainActivity.this, locationArrayList, recyclerView);
 
         recyclerView.setAdapter(myAdapter);
         for (String collection: collections) {
@@ -106,7 +106,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
+    /*
+    public void removeFromView() {
+        myAdapter.notifyDataSetChanged();
+    }
+     */
 }
 
 
