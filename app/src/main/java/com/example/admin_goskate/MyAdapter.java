@@ -33,7 +33,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     Context context;
     ArrayList<Location> locationArrayList;
     RecyclerView rv;
-    ItemClickListener itemClickListener;
 
     public MyAdapter(Context context, ArrayList<Location> locationArrayList, RecyclerView rv) {
         this.context = context;
@@ -78,8 +77,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             lbl_type = itemView.findViewById(R.id.lbl_type);
             lbl_description = itemView.findViewById(R.id.lbl_description);
             lbl_id = itemView.findViewById(R.id.lbl_id);
-
-            this.context = context;
 
             btn_approve = itemView.findViewById(R.id.btn_approve);
             btn_reject = itemView.findViewById(R.id.btn_reject);
@@ -132,7 +129,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
                                         Log.d("TAG", "onFailure: task failed");
-                                        Log.d("TAG", "onFailure 2: " + e.toString());
+                                        Log.d("TAG", "onFailure 2: " + e);
                                     }
                                 });
                     } catch (IOException e) {

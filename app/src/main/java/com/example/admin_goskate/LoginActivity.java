@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText edit_username, edit_password;
-    private Button btn_login;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -29,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         // region Define Components
         edit_username = findViewById(R.id.edit_username);
         edit_password = findViewById(R.id.edit_password);
-        btn_login = findViewById(R.id.btn_login);
+        Button btn_login = findViewById(R.id.btn_login);
         // endregion
         firebaseAuth = FirebaseAuth.getInstance();
         btn_login.setOnClickListener(new View.OnClickListener() {
