@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">goSkate admin app</string>
+
+    <!-- activity_login.xml -->
+    <string name="app_title">goSkate</string>
+    <string name="login_subheading">- Admin App -</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">Login</string>
+
+    <!-- list item -->
+    <string name="name_holder">[name]</string>
+    <string name="addr_holder">[address]</string>
+    <string name="type_holder">[type]</string>
+    <string name="desc_holder">[description]</string>
+    <string name="cond_holder">[condition]</string>
+    <string name="docID_holder">[document ID]</string>
+
+    <string name="btn_reject">Reject</string>
+    <string name="btn_approve">Approve</string>
 </resources>

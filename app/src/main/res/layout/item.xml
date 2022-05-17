@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="[name]"
+            android:text="@string/name_holder"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            android:text="[address]"
+            android:text="@string/addr_holder"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lbl_name" />
 
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            android:text="[type]"
+            android:text="@string/type_holder"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lbl_address" />
 
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:text="[condition]"
+            android:text="@string/cond_holder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lbl_address" />
 
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            android:text="[description]"
+            android:text="@string/desc_holder"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider" />
 
@@ -93,7 +93,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:text="Approve"
+            android:text="@string/btn_approve"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
@@ -103,7 +103,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:text="Reject"
+            android:text="@string/btn_reject"
             app:layout_constraintEnd_toStartOf="@+id/btn_approve"
             app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
@@ -114,7 +114,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="[document ID]"
+            android:text="@string/docID_holder"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

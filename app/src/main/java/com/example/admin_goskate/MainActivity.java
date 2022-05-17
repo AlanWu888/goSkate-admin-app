@@ -108,6 +108,9 @@ public class MainActivity extends AppCompatActivity {
     }
     /*
     public void removeFromView() {
+        // update the recycler view that a row was removed.
+        // hours wasted : 4
+
         myAdapter.notifyDataSetChanged();
     }
      */
