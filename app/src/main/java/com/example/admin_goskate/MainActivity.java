@@ -33,19 +33,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // region progress dialog
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Fetching Data...");
         progressDialog.show();
+        // endregion
 
+        // region recyclerView
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // endregion
 
         firestore = FirebaseFirestore.getInstance();
+
         locationArrayList = new ArrayList<Location>();
         myAdapter = new MyAdapter(MainActivity.this, locationArrayList, recyclerView);
 
+        // set adapter to recyclerView
         recyclerView.setAdapter(myAdapter);
         for (String collection: collections) {
             EventChangeListener(collection);
@@ -58,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void EventChangeListener(String collection) {
+        // update view if the dataset is changed
+        // WORKS if a new location is sent for approval
+        // CRASHES app if the admin user rejects/approves a location; changes will go through on the database however,
+        // results in admin users having to restart the app everytime they reject/approve one location
         firestore.collection(collection)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override

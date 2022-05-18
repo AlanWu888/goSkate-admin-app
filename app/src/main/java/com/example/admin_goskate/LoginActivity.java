@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
                 email = edit_username.getText().toString().trim();
                 password = edit_password.getText().toString().trim();
 
+                // check user is signed in
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

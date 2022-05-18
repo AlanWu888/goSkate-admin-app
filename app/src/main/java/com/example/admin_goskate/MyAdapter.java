@@ -71,6 +71,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            // region define components
             lbl_name = itemView.findViewById(R.id.lbl_name);
             lbl_address = itemView.findViewById(R.id.lbl_address);
             lbl_condition = itemView.findViewById(R.id.lbl_condition);
@@ -80,10 +81,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
             btn_approve = itemView.findViewById(R.id.btn_approve);
             btn_reject = itemView.findViewById(R.id.btn_reject);
+            // endregion
 
             btn_approve.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    // approve a location to the main database
                     // Log to the console - test onClick works
                     Log.d("TAG", "onClick: approve pressed on " + lbl_name.getText().toString());
 
@@ -140,6 +143,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             });
 
             btn_reject.setOnClickListener(new View.OnClickListener() {
+                // reject a location
                 @Override
                 public void onClick(View view) {
                     Log.d("TAG", "onClick: reject pressed on " + lbl_name.getText().toString());
@@ -155,6 +159,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         }
 
         private void removeDocument(String documentID, String collection) {
+            // remove a document from the fireStore collections starting with "approval_"
             FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
             DocumentReference noteRef = firebaseFirestore.collection("approval_"+collection).document(documentID);
 
